@@ -204,6 +204,5 @@ function updateQuantity(index, change) {
 function clearAllItemsFromCart() {
     const emptyCart = [];
     saveCart(emptyCart);
-    loadCart();
     updateCartCount();
 }
