@@ -69,6 +69,12 @@
             // Check if they match the allowed test values
             if (cardNumber === "123456789" && expiry === "1019" && cvv === "211") {
                 alert("Order placed! Thank you for shopping with Root & Bloom.");
+                if (typeof clearAllItemsFromCart === 'function') {
+                    clearAllItemsFromCart();
+                } else {
+                    alert("unable to clear cart");
+                }
+              window.location.href = 'cart.html'; 
             } else {
                 alert("Payment failed. Please check your card details.");
             }
