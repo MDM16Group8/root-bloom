@@ -98,23 +98,22 @@ function updateCartCount() {
 function addItemToCart(ingredient) {
   let cart = getCart();
 
-  const info = window.INGREDIENTS.find(i => i.id === id);
+  const info = window.INGREDIENTS.find(i => i.id === ingredient);
   if (!info) return;
 
-  const existing = cart.find(item => item.id === id);
+  const existing = cart.find(item => item.id === ingredient);
   if (existing) {
-    existing.quantity += qty;
+    existing.quantity += 1;
   } else {
     cart.push({
-      id: id,
+      id: ingredient,
       name: info.name,
       price: info.priceValue,
-      quantity: qty
+      quantity: 1
     });
   }
 
   saveCart(cart);
-  alert('Ingredients have been added to your cart!');
   updateCartCount();
 }
 
