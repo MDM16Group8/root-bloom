@@ -45,7 +45,7 @@ document.addEventListener(
   "DOMContentLoaded",
   function () {
     if (currentRating != 0) {
-      currentRating = localStorage.getItem("squashCurry");
+      currentRating = localStorage.getItem("chorizo");
       ratings.forEach((rating) => {
         rating.textContent = currentRating;
       });
@@ -98,7 +98,7 @@ function rate(newRating) {
     rating.textContent = currentRating;
   });
 
-  localStorage.setItem("squashCurry", currentRating);
+  localStorage.setItem("chorizo", currentRating);
 }
 
 let checked = function () {
