@@ -15,21 +15,146 @@
         <img class="logo" src=logos/transparent-green.png width="15%" alt="root + bloom logo in green"/></a> 
     </div>
     <div class="topnav">
-        <a href="shop.html">Shop Groceries</a>
+        <a class="active" href="cart.html">My Cart (<span class="cart-count" id="cart-count">0</span>)</a>
         <a href="recipes.html">Explore Recipes</a>
-        <a href="cart.html">My Cart (<span class="cart-count" id="cart-count">0</span>)</a>
+        <a href="shop.html">Shop Groceries</a>
     </div>
     <div class="body">
-        <h1> you're at sign up </h1>
-
-
-
-
-
+        <h2> Create an account with us. </h2>
+        <form id="signupForm" style="max-width:400px;margin:auto;">
+            <label for="firstName"><b>First Name</b></label><br>
+            <div style="display:flex;align-items:center;margin-bottom:24px;">
+                <input type="text" id="firstName" name="firstName" style="flex:1;padding:8px;max-width:85%;">
+                <span id="firstNameCheck" style="margin-left:12px;display:none;color:#388e3c;font-size:1.3em;">&#10003;</span>
+            </div>
+            <label for="lastName"><b>Last Name</b></label><br>
+            <div style="display:flex;align-items:center;margin-bottom:24px;">
+                <input type="text" id="lastName" name="lastName" style="flex:1;padding:8px;max-width:85%;">
+                <span id="lastNameCheck" style="margin-left:12px;display:none;color:#388e3c;font-size:1.3em;">&#10003;</span>
+            </div>
+            <label for="email"><b>Email Address</b></label><br>
+            <div style="display:flex;align-items:center;margin-bottom:24px;">
+                <input type="email" id="email" name="email" style="flex:1;padding:8px;max-width:85%;">
+                <span id="emailCheck" style="margin-left:12px;display:none;color:#388e3c;font-size:1.3em;">&#10003;</span>
+            </div>
+            <label for="password"><b>Password</b></label><br>
+            <div style="display:flex;align-items:center;margin-bottom:24px;">
+                <input type="password" id="password" name="password" style="flex:1;padding:8px;max-width:85%;">
+                <span id="passwordCheck" style="margin-left:12px;display:none;color:#388e3c;font-size:1.3em;">&#10003;</span>
+            </div>
+            <div id="allErrors" style="min-height:44px;color:#d32f2f;font-family:'Jost',sans-serif;font-size:0.95em;margin-bottom:24px;text-align:left;"></div>
+            <div id="successMsg" style="color:#388e3c;font-family:'Jost',sans-serif;font-weight:600;text-align:center;margin-bottom:16px;"></div>
+            <div style="text-align:center;">
+                <button type="submit" style="background:#FFB300;color:#1b5e20;font-family:'Gelasio',serif;font-weight:700;padding:10px 20px;border:none;border-radius:4px;cursor:pointer;margin-top:12px;">Create Account</button>
+            </div>
+        </form>
     </div>
-    <script src="cart.js"></script>
     <script>
-        updateCartCount();
+    //clears all fields and checks on page load
+    window.onload = function() {
+        document.getElementById('firstName').value = "";
+        document.getElementById('lastName').value = "";
+        document.getElementById('email').value = "";
+        document.getElementById('password').value = "";
+        document.getElementById('firstNameCheck').style.display = "none";
+        document.getElementById('lastNameCheck').style.display = "none";
+        document.getElementById('emailCheck').style.display = "none";
+        document.getElementById('passwordCheck').style.display = "none";
+    };
+
+    function validateFirstName() {
+        var val = document.getElementById('firstName').value.trim();
+        var namePattern = /^[A-Za-z]+$/;
+        if (val !== "" && namePattern.test(val)) {
+            document.getElementById('firstNameCheck').style.display = "inline";
+        } else {
+            document.getElementById('firstNameCheck').style.display = "none";
+        }
+    }
+    function validateLastName() {
+        var val = document.getElementById('lastName').value.trim();
+        var namePattern = /^[A-Za-z]+$/;
+        if (val !== "" && namePattern.test(val)) {
+            document.getElementById('lastNameCheck').style.display = "inline";
+        } else {
+            document.getElementById('lastNameCheck').style.display = "none";
+        }
+    }
+    function validateEmail() {
+        var val = document.getElementById('email').value.trim();
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailPattern.test(val)) {
+            document.getElementById('emailCheck').style.display = "inline";
+        } else {
+            document.getElementById('emailCheck').style.display = "none";
+        }
+    }
+    function validatePassword() {
+        var val = document.getElementById('password').value;
+        if (val.length >= 6 && /\d/.test(val)) {
+            document.getElementById('passwordCheck').style.display = "inline";
+        } else {
+            document.getElementById('passwordCheck').style.display = "none";
+        }
+    }
+
+    document.getElementById('firstName').addEventListener('input', validateFirstName);
+    document.getElementById('lastName').addEventListener('input', validateLastName);
+    document.getElementById('email').addEventListener('input', validateEmail);
+    document.getElementById('password').addEventListener('input', validatePassword);
+
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var firstName = document.getElementById('firstName').value.trim();
+        var lastName = document.getElementById('lastName').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var password = document.getElementById('password').value;
+
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var namePattern = /^[A-Za-z]+$/;
+
+        document.getElementById('allErrors').innerHTML = "";
+        document.getElementById('successMsg').innerHTML = "";
+
+        var errors = [];
+
+        if (firstName === "") {
+            errors.push("First name is required.");
+        } else if (!namePattern.test(firstName)) {
+            errors.push("First name must only contain letters.");
+        }
+        if (lastName === "") {
+            errors.push("Last name is required.");
+        } else if (!namePattern.test(lastName)) {
+            errors.push("Last name must only contain letters.");
+        }
+        if (!emailPattern.test(email)) {
+            errors.push("Please enter a valid email address.");
+        } else if (localStorage.getItem('user_' + email)) {
+            errors.push("An account with this email already exists.");
+        }
+        if (password.length < 6) {
+            errors.push("Password must be at least 6 characters.");
+        } else if (!/\d/.test(password)) {
+            errors.push("Password must contain at least one number.");
+        }
+
+        if (errors.length > 0) {
+            document.getElementById('allErrors').innerHTML = errors.join("<br>");
+        } else {
+            var user = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
+            };
+            localStorage.setItem('user_' + email, JSON.stringify(user));
+            document.getElementById('successMsg').innerHTML = "Account created successfully! You can now sign in using your credentials.";
+            setTimeout(function() {
+                window.location.href = "signin.html";
+            }, 2000);
+        }
+    });
     </script>
 </body>
 </html>
