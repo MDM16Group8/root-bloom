@@ -393,3 +393,43 @@ th {
   font-weight: 500;
   color: #1b5e20;
 }
+
+td {
+  font-family: "Jost", sans-serif;
+  font-weight: 300;
+  color: #212121;
+  border-left: 8px solid;
+  border-color: #fef2cfff;
+  text-align: center;
+  padding: 1%;
+  word-wrap: break-word;
+}
+
+.product {
+  width: 100%;
+}
+
+.add {
+  padding: 1%;
+  background-color: #FFB300;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+}
+.add:hover {
+  background-color: #fef2cfff;
+  color: #FFB300;
+}
+
+.add:disabled {
+  background-color: grey;
+  color: grey;
+}
+
+#navnum {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  color: #1b5e20;
+}
