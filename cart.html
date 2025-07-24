@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Root & Bloom Food </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="root_style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="banner">
+    <a href="root_home.html">
+      <img class="logo" src=logos/transparent-green.png width="15%" alt="root + bloom logo in green"/></a> 
+    </div>
+    <div class="topnav">
+      <a class="active" href="cart.html">My Cart</a>
+      <a href="recipes.html">Explore Recipes</a>
+      <a href="shop.html">Shop Groceries</a>
+    </div>
+    <div class="body">
+      <div class="cart-container">
+        <h2>Your Shopping Cart</h2>
+        <div id="cart-items"></div>
+
+        <div class="cart-summary">
+          <p id="cart-total">Total: $0.00</p>
+          <button id="checkout-btn">Proceed to Checkout</button>
+          <button id="signin-btn">Sign in to access saved payment methods</button>
+          <button id="signup-btn">Sign up for faster checkout next time</button>
+          <p id="cart-message"></p>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      if (!localStorage.getItem("cart")) {
+        localStorage.setItem("cart", JSON.stringify([
+          { name: "Salmon", price: 14.39, quantity: 2 },
+          { name: "Chorizo", price: 6.99, quantity: 1 },
+          { name: "Spaghetti", price: 2.49, quantity: 3 }
+        ]));
+      }
+      function loadCart() {
+        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartContainer = document.getElementById("cart-items");
+        const totalDisplay = document.getElementById("cart-total");
+        const message = document.getElementById("cart-message");
+
+        cartContainer.innerHTML = "";
+        let total = 0;
+
+        cartItems.forEach((item, index) => {
+          const itemTotal = (item.price * item.quantity).toFixed(2);
+          total += parseFloat(itemTotal);
+
+          const itemDiv = document.createElement("div");
+          itemDiv.className = "cart-item";
+          itemDiv.innerHTML = `
+        <span>${item.name}</span>
+        <span>$${item.price.toFixed(2)}</span>
+        <div class="quantity-controls">
+          <button onclick="updateQuantity(${index}, -1)">−</button>
+          <span>${item.quantity}</span>
+          <button onclick="updateQuantity(${index}, 1)">+</button>
+        </div>
+        <span>$${itemTotal}</span>
+        <button onclick="removeItem(${index})">remove from cart</button>
+          `;
+          cartContainer.appendChild(itemDiv);
+        });
+
+        totalDisplay.innerText = `Total: $${total.toFixed(2)}`;
+        const checkoutBtn = document.getElementById("checkout-btn");
+        if (cartItems.length === 0) {
+          checkoutBtn.disabled = true;
+          checkoutBtn.style.opacity = 0.5;
+        } else {
+          checkoutBtn.disabled = false;
+          checkoutBtn.style.opacity = 1;
+        }
+      }
+
+      function updateQuantity(index, change) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart[index].quantity += change;
+
+        if (cart[index].quantity < 1) {
+          cart[index].quantity = 1;
+          document.getElementById("cart-message").innerText = "Quantity can't be less than 1.";
+        } else {
+          document.getElementById("cart-message").innerText = "Item updated!";
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        loadCart();
+      }
+
+      function removeItem(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        document.getElementById("cart-message").innerText = "Item removed!";
+        loadCart();
+      }
+
+
+      document.getElementById("checkout-btn").addEventListener("click", () => {
+        window.location.href = "guest.html";
+      });
+
+      document.getElementById("signin-btn").addEventListener("click", () => {
+        window.location.href = "signin.html";
+      });
+
+      document.getElementById("signup-btn").addEventListener("click", () => {
+        window.location.href = "signup.html";
+      });
+
+
+
+      loadCart();
+
+    </script>
+
+  </body>
+  </html>
+

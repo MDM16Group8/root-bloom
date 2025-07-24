@@ -1,0 +1,395 @@
+body {
+  background: #f8f8f8;
+}
+
+h1 {
+  font-family: "Gelasio", serif;
+  font-weight: 700;
+  color: #1b5e20;
+  text-decoration: underline;
+}
+
+h2 {
+  font-family: "Gelasio", serif;
+  font-weight: 700;
+  color: #1b5e20;
+}
+
+h3 {
+  font-family: "Jost", sans-serif;
+  font-weight: 900;
+  color: #1b5e20;
+}
+
+h4 {
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+  color: #1b5e20;
+}
+
+p {
+  font-family: "Jost", sans-serif;
+  font-weight: 300;
+  color: #212121;
+}
+
+li {
+  font-family: "Jost", sans-serif;
+  font-weight: 300;
+  color: #212121;
+}
+
+.banner {
+  overflow: hidden;
+  float: center;
+  width: 100%;
+  background: #FFB300;
+}
+
+.topnav {
+  overflow: hidden;
+  width: 100%;
+  background: #FFB300;
+}
+
+.topnav a {
+  text-align: center;
+  padding: 2%;
+  text-decoration: none;
+  font-family: "Gelasio", serif;
+  font-weight: 700;
+  color: #1b5e20;
+  float: right;
+}
+
+.topnav a:hover {
+  color: #fef2cfff;
+}
+
+.topnav a.active {
+  color: #a3d6a7;
+  background: #1b5e20;
+  text-decoration: underline;
+}
+
+.logo {
+  float: left;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.body {
+  padding: 3%;
+  background: #fef2cfff;
+}
+
+a {
+  font-family: "Jost", sans-serif;
+  font-weight: 300;
+  color: #1b5e20;
+}
+
+.cart_icon {
+  float: right;
+  margin-right: 2%;
+}
+
+/* Recipe Page */
+
+/* Content-Left */
+
+.content-left {
+  width: 60%;
+}
+
+.recipe-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: top;
+  margin: auto;
+}
+
+.recipe-btns {
+  margin-top: 10px;
+  width: 90%;
+  align-items: flex-start;
+}
+
+.recipe-btn {
+  background-color: #1B5E20;
+  color: #F8F8F8;
+  font-family: 'Gelasio', serif;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.recipe-btn:hover {
+  background-color: #144D19;
+}
+
+.recipe-des {
+  width: 80%;
+}
+
+/* Sharing */
+.share {
+  margin-top: 10px;
+  display: none;
+}
+
+.fa-social {
+  background-color: #1B5E20;
+  cursor: pointer;
+  padding: 1rem;
+  width: 1rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.fa-social:hover {
+  background-color: #144D19;
+}
+
+/* Rating */
+
+.rate {
+  display: none;
+  align-items: center;
+  background-color: #1B5E20;
+  font-family: 'Gelasio', serif;
+  font-weight: bold;
+  padding: 0.02rem 1rem;
+  border: none;
+  text-align: center;
+  margin-top: 10px;
+  width: 50%;
+}
+
+.rating {
+  margin-left: 10px;
+  color: #F8F8F8;
+  font-size: medium;
+}
+
+
+.fa {
+  margin: 2px;
+  color: #F8F8F8;
+}
+
+.fa-star {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.checked {
+  color: #FFB300;
+  ;
+}
+
+/* Content-Right */
+
+.content-right {
+  width: 100%;
+}
+
+.data th,
+.data td {
+  border: 1px solid black;
+  padding: 0.2rem;
+}
+
+.recipe-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Recipe Page: Add to Cart */
+.content-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.recipe-image {
+  width: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+  height: auto;
+}
+
+.recipe-image-container {
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  display: flex;
+}
+
+.recipe-content {
+  flex: 1;
+  padding-left: 30px;
+}
+
+.qty-controls {
+  cursor: pointer;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.qty {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+}
+
+ul#ingredient-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+button.add-cart-btn {
+  background-color: #1b5e20;
+  color: #a3d6a7;
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.add-cart-btn:hover {
+  background-color: #a3d6a7;
+  color: #1b5e20;
+}
+
+.cart-floating {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  background: #fef2cf;
+  padding: 8px 12px;
+  border-radius: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.cart-floating img {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+.cart-count {
+  font-family: "Jost", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.nutrition-table {
+  width: 60%;
+  margin-top: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid #1b5e20;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+}
+
+.nutrition-table th,
+.nutrition-table td {
+  padding: 10px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.nutrition-table th {
+  background-color: #ffffff;
+  color: #333;
+  text-align: left;
+  font-weight: 600;
+}
+
+.nutrition-table td {
+  background-color: #ffffff;
+  color: #555;
+}
+
+.nutrition-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* END */
+
+.shop-ingredients {
+  background-color: transparent;
+  color: #144D19;
+}
+
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.two-col {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+
+  padding: 12px;
+  background-color: #FFB300;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #e09c00;
+}
+
+.return-link {
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+  color: #0D47A1;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.return-link:hover {
+  text-decoration: underline;
+}
+
+table {
+  font-family: "Jost", sans-serif;
+  font-weight: 300;
+  color: #212121;
+}
+
+th {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  color: #1b5e20;
+}

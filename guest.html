@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Root & Bloom Food </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="root_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="banner">
+        <a href="root_home.html">
+            <img class="logo" src="logos/transparent-green.png" width="15%" alt="root + bloom logo in green"/>
+        </a> 
+    </div>
+
+    <div class="topnav">
+        <a class="active" href="cart.html">My Cart</a>
+        <a href="recipes.html">Explore Recipes</a>
+        <a href="shop.html">Shop Groceries</a>
+    </div>
+
+    <div class="body">
+        <h1>You're at Guest Checkout</h1>
+
+        <form id="checkout-form">
+            <section>
+                <h2>Contact Information</h2>
+                <input type="email" placeholder="Email" required />
+            </section>
+
+            <section>
+                <h2>Delivery Address</h2>
+                <div class="two-col">
+                    <input type="text" placeholder="First name" required />
+                    <input type="text" placeholder="Last name" required />
+                </div>
+                <input type="text" placeholder="Address" required />
+                <input type="text" placeholder="City" required />
+                <input type="text" placeholder="Postal code" required />
+            </section>
+
+            <section>
+                <h2>Payment Method</h2>
+                <input type="text" placeholder="Card number" required />
+                <div class="two-col">
+                    <input type="text" placeholder="Expiration date" required />
+                    <input type="text" placeholder="CVV" required />
+                </div>
+            </section>
+
+            <button type="submit">Place Order</button>
+            <a href="cart.html" class="return-link">Return to Cart</a>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('checkout-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get input values
+            const cardNumber = document.querySelector('input[placeholder="Card number"]').value.trim();
+            const expiry = document.querySelector('input[placeholder="Expiration date"]').value.trim();
+            const cvv = document.querySelector('input[placeholder="CVV"]').value.trim();
+
+            // Check if they match the allowed test values
+            if (cardNumber === "123456789" && expiry === "1019" && cvv === "211") {
+                alert("Order placed! Thank you for shopping with Root & Bloom.");
+            } else {
+                alert("Payment failed. Please check your card details.");
+            }
+        });
+    </script>
+</body>
+</html>
+
+

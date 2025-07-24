@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Root & Bloom Food </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="root_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400..700;1,400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="banner">
+        <a href="root_home.html">
+            <img class="logo" src=logos/transparent-green.png width="15%" alt="root + bloom logo in green" /></a>
+    </div>
+    <div class="topnav">
+        <a href="cart.html">My Cart</a>
+        <a class="active" href="recipes.html">Explore Recipes</a>
+        <a href="shop.html">Shop Groceries</a>
+    </div>
+    <div class="body">
+        <h1> Explore Recipes </h1>
+        <h4>View our suggested recipe of the week!</h2>
+            <a href="curry-recipe.html">Squash Curry</a><br>
+            <h4> Or find a recipe to use an ingredient you already have: </h2>
+                <a href="salmon-recipe.html">Salmon</a> <br>
+                <a href="chorizo-recipe.html">Chorizo</a> <br>
+                <a href="spaghetti-recipe.html">Spaghetti</a> <br>
+
+
+    </div>
+
+
+    <script>
+        // Rating
+
+        const stars = document.querySelectorAll(".fa-star");
+        const ratings = document.querySelectorAll(".rating-number");
+        let currentRating;
+        document.addEventListener('DOMContentLoaded', function () {
+            if (currentRating != 0) {
+                currentRating = localStorage.getItem("squashCurry");
+                ratings.forEach(rating => {
+                    rating.textContent = currentRating;
+                })
+                stars.forEach(star => {
+                    const starValue = star.getAttribute("value");
+                    if (starValue <= currentRating) {
+                        star.classList.add("checked");
+                    } else {
+                        star.classList.remove("checked")
+                    }
+                });
+            } else {
+                currentRating = 0;
+            }
+        }, false);
+
+    </script>
+</body>
+
+</html>
