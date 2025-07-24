@@ -50,111 +50,113 @@
         </form>
     </div>
     <script>
-    //clears all fields and checks on page load
-    window.onload = function() {
-        document.getElementById('firstName').value = "";
-        document.getElementById('lastName').value = "";
-        document.getElementById('email').value = "";
-        document.getElementById('password').value = "";
-        document.getElementById('firstNameCheck').style.display = "none";
-        document.getElementById('lastNameCheck').style.display = "none";
-        document.getElementById('emailCheck').style.display = "none";
-        document.getElementById('passwordCheck').style.display = "none";
-    };
-
-    function validateFirstName() {
-        var val = document.getElementById('firstName').value.trim();
-        var namePattern = /^[A-Za-z]+$/;
-        if (val !== "" && namePattern.test(val)) {
-            document.getElementById('firstNameCheck').style.display = "inline";
-        } else {
+        //clears all fields and checks on page load
+        window.onload = function() {
+            document.getElementById('firstName').value = "";
+            document.getElementById('lastName').value = "";
+            document.getElementById('email').value = "";
+            document.getElementById('password').value = "";
             document.getElementById('firstNameCheck').style.display = "none";
-        }
-    }
-    function validateLastName() {
-        var val = document.getElementById('lastName').value.trim();
-        var namePattern = /^[A-Za-z]+$/;
-        if (val !== "" && namePattern.test(val)) {
-            document.getElementById('lastNameCheck').style.display = "inline";
-        } else {
             document.getElementById('lastNameCheck').style.display = "none";
-        }
-    }
-    function validateEmail() {
-        var val = document.getElementById('email').value.trim();
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailPattern.test(val)) {
-            document.getElementById('emailCheck').style.display = "inline";
-        } else {
             document.getElementById('emailCheck').style.display = "none";
-        }
-    }
-    function validatePassword() {
-        var val = document.getElementById('password').value;
-        if (val.length >= 6 && /\d/.test(val)) {
-            document.getElementById('passwordCheck').style.display = "inline";
-        } else {
             document.getElementById('passwordCheck').style.display = "none";
+        };
+
+        function validateFirstName() {
+            var val = document.getElementById('firstName').value.trim();
+            var namePattern = /^[A-Za-z]+$/;
+            if (val !== "" && namePattern.test(val)) {
+                document.getElementById('firstNameCheck').style.display = "inline";
+            } else {
+                document.getElementById('firstNameCheck').style.display = "none";
+            }
         }
-    }
-
-    document.getElementById('firstName').addEventListener('input', validateFirstName);
-    document.getElementById('lastName').addEventListener('input', validateLastName);
-    document.getElementById('email').addEventListener('input', validateEmail);
-    document.getElementById('password').addEventListener('input', validatePassword);
-
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        var firstName = document.getElementById('firstName').value.trim();
-        var lastName = document.getElementById('lastName').value.trim();
-        var email = document.getElementById('email').value.trim();
-        var password = document.getElementById('password').value;
-
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        var namePattern = /^[A-Za-z]+$/;
-
-        document.getElementById('allErrors').innerHTML = "";
-        document.getElementById('successMsg').innerHTML = "";
-
-        var errors = [];
-
-        if (firstName === "") {
-            errors.push("First name is required.");
-        } else if (!namePattern.test(firstName)) {
-            errors.push("First name must only contain letters.");
+        function validateLastName() {
+            var val = document.getElementById('lastName').value.trim();
+            var namePattern = /^[A-Za-z]+$/;
+            if (val !== "" && namePattern.test(val)) {
+                document.getElementById('lastNameCheck').style.display = "inline";
+            } else {
+                document.getElementById('lastNameCheck').style.display = "none";
+            }
         }
-        if (lastName === "") {
-            errors.push("Last name is required.");
-        } else if (!namePattern.test(lastName)) {
-            errors.push("Last name must only contain letters.");
+        function validateEmail() {
+            var val = document.getElementById('email').value.trim();
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailPattern.test(val)) {
+                document.getElementById('emailCheck').style.display = "inline";
+            } else {
+                document.getElementById('emailCheck').style.display = "none";
+            }
         }
-        if (!emailPattern.test(email)) {
-            errors.push("Please enter a valid email address.");
-        } else if (localStorage.getItem('user_' + email)) {
-            errors.push("An account with this email already exists.");
-        }
-        if (password.length < 6) {
-            errors.push("Password must be at least 6 characters.");
-        } else if (!/\d/.test(password)) {
-            errors.push("Password must contain at least one number.");
+        function validatePassword() {
+            var val = document.getElementById('password').value;
+            if (val.length >= 6 && /\d/.test(val)) {
+                document.getElementById('passwordCheck').style.display = "inline";
+            } else {
+                document.getElementById('passwordCheck').style.display = "none";
+            }
         }
 
-        if (errors.length > 0) {
-            document.getElementById('allErrors').innerHTML = errors.join("<br>");
-        } else {
-            var user = {
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                password: password
-            };
-            localStorage.setItem('user_' + email, JSON.stringify(user));
-            document.getElementById('successMsg').innerHTML = "Account created successfully! You can now sign in using your credentials.";
-            setTimeout(function() {
-                window.location.href = "signin.html";
-            }, 2000);
-        }
-    });
+        document.getElementById('firstName').addEventListener('input', validateFirstName);
+        document.getElementById('lastName').addEventListener('input', validateLastName);
+        document.getElementById('email').addEventListener('input', validateEmail);
+        document.getElementById('password').addEventListener('input', validatePassword);
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var firstName = document.getElementById('firstName').value.trim();
+            var lastName = document.getElementById('lastName').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var password = document.getElementById('password').value;
+
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var namePattern = /^[A-Za-z]+$/;
+
+            document.getElementById('allErrors').innerHTML = "";
+            document.getElementById('successMsg').innerHTML = "";
+
+            var errors = [];
+
+            if (firstName === "") {
+                errors.push("First name is required.");
+            } else if (!namePattern.test(firstName)) {
+                errors.push("First name must only contain letters.");
+            }
+            if (lastName === "") {
+                errors.push("Last name is required.");
+            } else if (!namePattern.test(lastName)) {
+                errors.push("Last name must only contain letters.");
+            }
+            if (!emailPattern.test(email)) {
+                errors.push("Please enter a valid email address.");
+            } else if (localStorage.getItem('user_' + email)) {
+                errors.push("An account with this email already exists.");
+            }
+            if (password.length < 6) {
+                errors.push("Password must be at least 6 characters.");
+            } else if (!/\d/.test(password)) {
+                errors.push("Password must contain at least one number.");
+            }
+
+            if (errors.length > 0) {
+                document.getElementById('allErrors').innerHTML = errors.join("<br>");
+            } else {
+                var user = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password
+                };
+                localStorage.setItem('user_' + email, JSON.stringify(user));
+                document.getElementById('successMsg').innerHTML = "Account created successfully! You can now sign in using your credentials.";
+                setTimeout(function() {
+                    window.location.href = "signin.html";
+                }, 2000);
+            }
+        });
+
+        updateCartCount();
     </script>
 </body>
 </html>
