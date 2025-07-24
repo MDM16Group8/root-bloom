@@ -35,15 +35,13 @@
 
     <script src="cart.js"></script>
     <script>
-      document.getElementById('checkout-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-        document.getElementById("checkout-btn").addEventListener("click", success);
-        });
+      document.getElementById("checkout-btn").addEventListener("click", () => {
+        alert("Checkout Complete - using saved payment details";
+      });
+
       loadCart();
-      function success (){
-        alert("Order placed! Thank you for shopping with Root & Bloom.");
-        updateCartCount();
-      }
+
+      updateCartCount();
     </script>
 
   </body>
