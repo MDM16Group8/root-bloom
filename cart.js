@@ -199,3 +199,11 @@ function updateQuantity(index, change) {
     updateCartCount();
   }
 }
+
+// --- Clear All Items ---
+function clearAllItemsFromCart() {
+    const emptyCart = [];
+    saveCart(emptyCart);
+    loadCart();
+    updateCartCount();
+}
