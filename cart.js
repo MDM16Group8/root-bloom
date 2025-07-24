@@ -117,6 +117,23 @@ function addItemToCart(ingredient) {
   updateCartCount();
 }
 
+// Get product count in the cart
+// ingredient: product identifier of type INGREDIENT_IDS
+function getItemQuantity(ingredient) {
+  let cart = getCart();
+
+  const inCart = cart.find(item => item.id === ingredient);
+  if (!inCart) return 0;
+  return inCart.quantity
+}
+
+// Get product price
+// ingredient: product identifier of type INGREDIENT_IDS
+function getIngredientPrice(ingredient) {
+  const item = window.INGREDIENTS.find(i => i.id === ingredient);
+  return item && item.priceValue ? item.priceValue : 0;
+}
+
 // Adds multiple ingredients to cart
 // quantities: array of [ingredient: quantity] pairs
 // ingredient: product identifier of type INGREDIENT_IDS
