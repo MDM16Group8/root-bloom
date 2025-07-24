@@ -69,11 +69,15 @@
             // Check if they match the allowed test values
             if (cardNumber === "123456789" && expiry === "1019" && cvv === "211") {
                 alert("Order placed! Thank you for shopping with Root & Bloom.");
-            } else {
+                 cart.splice(index, 1);
+                saveCart(cart);
+                loadCart();
+                updateCartCount();
+            } 
+            else {
                 alert("Payment failed. Please check your card details.");
             }
         });
-        updateCartCount();
     </script>
 </body>
 </html>
