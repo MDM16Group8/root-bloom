@@ -15,7 +15,7 @@
             <img class="logo" src=logos/transparent-green.png width="15%" alt="root + bloom logo in green"/></a> 
         </div>
         <div class="topnav">
-            <a href="cart.html">My Cart<p id="navnum">0</p></a>
+            <a href="cart.html">My Cart (<span class="cart-count" id="cart-count">0</span>)</a>
             <a href="recipes.html">Explore Recipes</a>
             <a class = "active" href="shop.html">Shop Groceries</a>
         </div>
@@ -143,6 +143,7 @@
 
             </div>
 
+            <script src="cart.js"></script>
             <script>
      //**References**//
                 var navnum=document.querySelector("#navnum");
@@ -179,40 +180,21 @@
 
                 
 
-                var salmonprice = 10;
-                var creamprice = 8;
-                var butterprice = 6;
-                var cheeseprice = 12; 
-                var chorizoprice = 8;
-                var spaghettiprice = 2;
-                var beansprice = 2;
-                var pestoprice = 3;
-                var milkprice = 1; 
-                var curryprice = 7;
-                var spinachprice = 2;
-                var tomatoprice = 1;
-                var squashprice = 4;  
-                var pepperprice = 3;
-                var cilantroprice = 2;
-
-
-                let cart = JSON.parse(localStorage.getItem("shoppingCart")) || {
-                    salmonqty: 0,
-                    creamqty: 0,
-                    butterqty: 0,
-                    cheeseqty: 0,
-                    chorizoqty: 0,
-                    spaghettiqty: 0,
-                    beansqty: 0,
-                    pestoqty: 0,
-                    milkqty: 0,
-                    curryqty: 0,
-                    spinachqty: 0,
-                    tomatoqty: 0,
-                    squashqty: 0,
-                    pepperqty: 0,
-                    cilantroqty: 0
-                };
+                var salmonprice = getIngredientPrice(window.INGREDIENT_IDS.SALMON);
+                var creamprice = getItemQuantity(window.INGREDIENT_IDS.CREAM);
+                var butterprice = getItemQuantity(window.INGREDIENT_IDS.BUTTER);
+                var cheeseprice = getItemQuantity(window.INGREDIENT_IDS.PECORINO); 
+                var chorizoprice = getItemQuantity(window.INGREDIENT_IDS.CHORIZO);
+                var spaghettiprice = getItemQuantity(window.INGREDIENT_IDS.SPAGHETTI);
+                var beansprice = getItemQuantity(window.INGREDIENT_IDS.BEANS);
+                var pestoprice = getItemQuantity(window.INGREDIENT_IDS.PESTO);
+                var milkprice = getItemQuantity(window.INGREDIENT_IDS.COCONUT_MILK); 
+                var curryprice = getItemQuantity(window.INGREDIENT_IDS.CURRY_PASTE);
+                var spinachprice = getItemQuantity(window.INGREDIENT_IDS.SPINACH);
+                var tomatoprice = getItemQuantity(window.INGREDIENT_IDS.TOMATOES);
+                var squashprice = getItemQuantity(window.INGREDIENT_IDS.SQUASH);  
+                var pepperprice = getItemQuantity(window.INGREDIENT_IDS.PEPPER);
+                var cilantroprice = getItemQuantity(window.INGREDIENT_IDS.CORIANDER);
 
 
     //**Functions**//
@@ -236,182 +218,177 @@
 
     //**Function Definitions**//
     
-    navnum.textContent="("+((cart.salmonqty*1)+(cart.creamqty*1)+(cart.butterqty*1)+(cart.cheeseqty*1)+(cart.chorizoqty*1)+(cart.spaghettiqty*1)+(cart.beansqty*1)+(cart.pestoqty*1)+(cart.milkqty*1)+(cart.curryqty*1)+(cart.spinachqty*1)+(cart.tomatoqty*1)+(cart.squashqty*1)+(cart.cilantroqty*1)+(cart.pepperqty*1))+")";
-    squashnum.textContent = cart.squashqty + " in cart";
-    creamnum.textContent = cart.creamqty + " in cart";
-    salmonnum.textContent = cart.salmonqty + " in cart";
-    butternum.textContent = cart.butterqty + " in cart";
-    cheesenum.textContent = cart.cheeseqty + " in cart";
-    chorizonum.textContent = cart.chorizoqty + " in cart";
-    spaghettinum.textContent = cart.spaghettiqty + " in cart";
-    beansnum.textContent = cart.beansqty + " in cart";
-    pestonum.textContent = cart.pestoqty + " in cart";
-    milknum.textContent = cart.milkqty + " in cart";
-    currynum.textContent = cart.curryqty + " in cart";
-    spinachnum.textContent = cart.spinachqty + " in cart";
-    tomatonum.textContent = cart.tomatoqty + " in cart";
-    squashnum.textContent = cart.squashqty + " in cart";
-    cilantronum.textContent = cart.cilantroqty + " in cart";
-    peppernum.textContent = cart.pepperqty + " in cart"; 
+    squashnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.SQUASH)} in cart`;
+    creamnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.CREAM)} in cart`;
+    salmonnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.SALMON)} in cart`;
+    butternum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.BUTTER)} in cart`;
+    cheesenum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.PECORINO)} in cart`;
+    chorizonum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.CHORIZO)} in cart`;
+    spaghettinum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.SPAGHETTI)} in cart`;
+    beansnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.BEANS)} in cart`;
+    pestonum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.PESTO)} in cart`;
+    milknum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.COCONUT_MILK)} in cart`;
+    currynum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.CURRY_PASTE)} in cart`;
+    spinachnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.SPINACH)} in cart`;
+    tomatonum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.TOMATOES)} in cart`;
+    cilantronum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.CORIANDER)} in cart`;
+    peppernum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.PEPPER)} in cart`; 
 
 function addbutton() {
-
         if (this.id === "squash") {
-            if (cart.squashqty>=6){
+            if (getItemQuantity(window.INGREDIENT_IDS.SQUASH)>=6){
                 this.disabled=true;
                 alert("Max quantity for this item reached");
                 }
             else {
                 this.disabled=false;
-                cart.squashqty++;
+                addItemToCart(window.INGREDIENT_IDS.SQUASH)
                 }
             }
         else if (this.id === "cream") {
-            if (cart.creamqty>=6){
+            if (getItemQuantity(window.INGREDIENT_IDS.CREAM)>=6){
                 this.disabled=true;
                 alert("Max quantity for this item reached");
                 }
             else {
                 this.disabled=false;
-                cart.creamqty++;
+                addItemToCart(window.INGREDIENT_IDS.CREAM)
                 }
         }
         else if (this.id === "salmon") {
-            if (cart.salmonqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.SALMON) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.salmonqty++;
+                addItemToCart(window.INGREDIENT_IDS.SALMON)
             }
         }
         else if (this.id === "butter") {
-            if (cart.butterqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.BUTTER) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.butterqty++;
+                addItemToCart(window.INGREDIENT_IDS.BUTTER)
             }
         }
         else if (this.id === "cheese") {
-            if (cart.cheeseqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.PECORINO) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.cheeseqty++;
+                addItemToCart(window.INGREDIENT_IDS.PECORINO)
             }
         }
         else if (this.id === "chorizo") {
-            if (cart.chorizoqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.CHORIZO) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.chorizoqty++;
+                addItemToCart(window.INGREDIENT_IDS.CHORIZO)
             }
         }
         else if (this.id === "spaghetti") {
-            if (cart.spaghettiqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.SPAGHETTI) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.spaghettiqty++;
+                addItemToCart(window.INGREDIENT_IDS.SPAGHETTI)
             }
         }
         else if (this.id === "beans") {
-            if (cart.beansqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.BEANS) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.beansqty++;
+                addItemToCart(window.INGREDIENT_IDS.BEANS)
             }
         }
         else if (this.id === "pesto") {
-            if (cart.pestoqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.PESTO) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.pestoqty++;
+                addItemToCart(window.INGREDIENT_IDS.PESTO)
             }
         }
         else if (this.id === "milk") {
-            if (cart.milkqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.COCONUT_MILK) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.milkqty++;
+                addItemToCart(window.INGREDIENT_IDS.COCONUT_MILK)
             }
         }
         else if (this.id === "curry") {
-            if (cart.curryqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.CURRY_PASTE) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.curryqty++;
+                addItemToCart(window.INGREDIENT_IDS.CURRY_PASTE)
             }
         }
         else if (this.id === "tomato") {
-            if (cart.tomatoqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.TOMATOES) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.tomatoqty++;
+                addItemToCart(window.INGREDIENT_IDS.TOMATOES)
             }
         }
         else if (this.id === "spinach") {
-            if (cart.spinachqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.SPINACH) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.spinachqty++;
+                addItemToCart(window.INGREDIENT_IDS.SPINACH)
             }
         }
         else if (this.id === "cilantro") {
-            if (cart.cilantroqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.CORIANDER) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.cilantroqty++;
+                addItemToCart(window.INGREDIENT_IDS.CORIANDER)
             }
         }
         else if (this.id === "pepper") {
-            if (cart.pepperqty >= 6) {
+            if (getItemQuantity(window.INGREDIENT_IDS.PEPPER) >= 6) {
                 this.disabled = true;
                 alert("Max quantity for this item reached");
             } else {
                 this.disabled = false;
-                cart.pepperqty++;
+                addItemToCart(window.INGREDIENT_IDS.PEPPER)
             }
         }
-    localStorage.setItem("shoppingCart", JSON.stringify(cart));
-    squashnum.textContent = cart.squashqty + " in cart";
-    creamnum.textContent = cart.creamqty + " in cart";
-    salmonnum.textContent = cart.salmonqty + " in cart";
-    butternum.textContent = cart.butterqty + " in cart";
-    cheesenum.textContent = cart.cheeseqty + " in cart";
-    chorizonum.textContent = cart.chorizoqty + " in cart";
-    spaghettinum.textContent = cart.spaghettiqty + " in cart";
-    beansnum.textContent = cart.beansqty + " in cart";
-    pestonum.textContent = cart.pestoqty + " in cart";
-    milknum.textContent = cart.milkqty + " in cart";
-    currynum.textContent = cart.curryqty + " in cart";
-    spinachnum.textContent = cart.spinachqty + " in cart";
-    tomatonum.textContent = cart.tomatoqty + " in cart";
-    squashnum.textContent = cart.squashqty + " in cart";
-    cilantronum.textContent = cart.cilantroqty + " in cart";
-    peppernum.textContent = cart.pepperqty + " in cart";
-    navnum.textContent="("+((cart.salmonqty*1)+(cart.creamqty*1)+(cart.butterqty*1)+(cart.cheeseqty*1)+(cart.chorizoqty*1)+(cart.spaghettiqty*1)+(cart.beansqty*1)+(cart.pestoqty*1)+(cart.milkqty*1)+(cart.curryqty*1)+(cart.spinachqty*1)+(cart.tomatoqty*1)+(cart.squashqty*1)+(cart.cilantroqty*1)+(cart.pepperqty*1))+")";
+    squashnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.SQUASH)} in cart`;
+    creamnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.CREAM)} in cart`;
+    salmonnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.SALMON)} in cart`;
+    butternum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.BUTTER)} in cart`;
+    cheesenum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.PECORINO)} in cart`;
+    chorizonum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.CHORIZO)} in cart`;
+    spaghettinum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.SPAGHETTI)} in cart`;
+    beansnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.BEANS)} in cart`;
+    pestonum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.PESTO)} in cart`;
+    milknum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.COCONUT_MILK)} in cart`;
+    currynum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.CURRY_PASTE)} in cart`;
+    spinachnum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.SPINACH)} in cart`;
+    tomatonum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.TOMATOES)} in cart`;
+    cilantronum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.CORIANDER)} in cart`;
+    peppernum.textContent = `${getItemQuantity(window.INGREDIENT_IDS.PEPPER)} in cart`; 
     }
+        updateCartCount();
 </script>
 </body>
 </html>
