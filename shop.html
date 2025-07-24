@@ -11,25 +11,408 @@
 </head>
 <body>
     <div class="banner">
-        <a href="index.html">
-        <img class="logo" src=logos/transparent-green.png width="15%" alt="root + bloom logo in green"/></a> 
-    </div>
-    <div class="topnav">
-        <a href="cart.html">My Cart (<span class="cart-count" id="cart-count">0</span>)</a>
-        <a href="recipes.html">Explore Recipes</a>
-        <a class = "active" href="shop.html">Shop Groceries</a>
-    </div>
-    <div class="body">
-        <h1> you're shopping </h1>
+        <a href="root_home.html">
+            <img class="logo" src=logos/transparent-green.png width="15%" alt="root + bloom logo in green"/></a> 
+        </div>
+        <div class="topnav">
+            <a href="cart.html">My Cart<p id="navnum">0</p></a>
+            <a href="recipes.html">Explore Recipes</a>
+            <a class = "active" href="shop.html">Shop Groceries</a>
+        </div>
+        <div class="body">
+            <h1> Shop for Groceries </h1>  
+            <div class="col-12" style="overflow-x:scroll;"> <br>
+                <h2> Fridge </h2>
+                <table>
+                    <tr>
+                        <th>Salmon</th>
+                        <th>Cream</th>
+                        <th>Butter</th>
+                        <th>Cheese</th>
+                        <th>Chorizo</th>
+                    </tr>
+                    <tr>
+                        <td><img class="product" src=images/salmon.jpg alt="salmon fillet"/></td>
+                        <td><img class="product" src=images/cream.jpg alt="carton of cream"/></td>
+                        <td><img class="product" src=images/butter.jpg alt="stick of butter"/></td>
+                        <td><img class="product" src=images/cheese.jpg alt="wedge of cheese"/></td>
+                        <td><img class="product" src=images/chorizo.jpg alt="chorizo"/></td>
+                    </tr>
+                    <tr>
+                        <td>$10/pkg</td>
+                        <td>$8/100ml</td>
+                        <td>$6/100g</td>
+                        <td>$12/250g</td>
+                        <td>$8/500g</td>
+                    </tr>
+                    <tr>
+                        <td><input class="add" type="button" value="Add Salmon to cart" id="salmon"></td>
+                        <td><input class="add" type="button" value="Add Cream to cart" id="cream"></td>
+                        <td><input class="add" type="button" value="Add Butter to cart" id="butter"></td>
+                        <td><input class="add" type="button" value="Add Cheese to cart" id="cheese"></td>
+                        <td><input class="add" type="button" value="Add Chorizo to cart" id="chorizo"></td>
+                    </tr>
+                    <tr>
+                        <td><p id="salmonnum">0 in cart</p></td>
+                        <td><p id="creamnum">0 in cart</p></td>
+                        <td><p id="butternum">0 in cart</p></td>
+                        <td><p id="cheesenum">0 in cart</p></td>
+                        <td><p id="chorizonum">0 in cart</p></td>
+                    </tr>
+                </table> 
+                <br> 
+                <h2> Pantry </h2>
+                <table>
+                    <tr>
+                        <th>Spaghetti</th>
+                        <th>Beans</th>
+                        <th>Pesto</th>
+                        <th>Coconut Milk</th>
+                        <th>Curry Paste</th>
+                    </tr>
+                    <tr>
+                        <td><img class="product" src=images/spaghetti_dry.jpg alt="dry spaghetti"/></td>
+                        <td><img  class="product" src=images/beans.jpg alt="can of beans"/></td>
+                        <td><img  class="product" src=images/pesto.jpg alt="jar of pesto"/></td>
+                        <td><img  class="product" src=images/coconut-milk.jpg alt="can of coconut milk"/></td>
+                        <td><img  class="product" src=images/curry-paste.jpg alt="jar of curry paste"/></td>
+                    </tr>
+                    <tr>
+                        <td>$2/pkg</td>
+                        <td>$2/540ml</td>
+                        <td>$3/270ml</td>
+                        <td>$1/400ml</td>
+                        <td>$7/112g</td>
+                    </tr>
+                    <tr>
+                        <td><input class="add" type="button" value="Add to cart" id="spaghetti"></td>
+                        <td><input class="add" type="button" value="Add to cart" id="beans"></td>
+                        <td><input class="add" type="button" value="Add to cart" id="pesto"></td>
+                        <td><input class="add" type="button" value="Add to cart" id="milk"></td>
+                        <td><input class="add" type="button" value="Add to cart" id="curry"></td>
+                    </tr>
+                    <tr>
+                        <td><p id="spaghettinum">0 in cart</p></td>
+                        <td><p id="beansnum">0 in cart</p></td>
+                        <td><p id="pestonum">0 in cart</p></td>
+                        <td><p id="milknum">0 in cart</p></td>
+                        <td><p id="currynum">0 in cart</p></td>
+                    </tr>
+                </table> 
+
+                <br>
+                <h2> Produce </h2> 
+
+                <table>
+                    <tr>
+                        <th>Spinach</th>
+                        <th>Tomato</th>
+                        <th>Squash</th>
+                        <th>Pepper</th>
+                        <th>Cilantro</th>
+                    </tr>
+                    <tr>   
+                        <td><img class="product" src=images/spinach.jpg alt="bunch of spinach"/></td>
+                        <td><img  class="product" src=images/tomato.jpg alt="tomato"/></td>
+                        <td><img  class="product" src=images/butternut-squash.jpg alt="butternut squash"/></td>
+                        <td><img  class="product" src=images/pepper.jpg alt="red bell pepper"/></td>
+                        <td><img  class="product" src=images/cilantro.jpg alt="bunch of cilantro"/></td>
+                    </tr>
+                    <tr>
+                        <td>$2/bunch</td>
+                        <td>$1/each</td>
+                        <td>$4/each</td>
+                        <td>$3/each</td>
+                        <td>$2/bunch</td>
+                    </tr>
+                    <tr>
+                        <td><input class="add" type="button" value="Add Spinach to cart" id="spinach"></td>
+                        <td><input class="add" type="button" value="Add Tomato to cart" id="tomato"></td>
+                        <td><input class="add" type="button" value="Add Squash to cart" id="squash"></td>
+                        <td><input class="add" type="button" value="Add Pepper to cart" id="pepper"></td>
+                        <td><input class="add" type="button" value="Add Cilantro to cart" id="cilantro"></td>
+                    </tr>
+                    <tr>
+                        <td><p id="spinachnum">0 in cart</p></td>
+                        <td><p id="tomatonum">0 in cart</p></td>
+                        <td><p id="squashnum">0 in cart</p></td>
+                        <td><p id="peppernum">0 in cart</p></td>
+                        <td><p id="cilantronum">0 in cart</p></td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <script>
+     //**References**//
+                var navnum=document.querySelector("#navnum");
+                var salmon=document.querySelector("#salmon");
+                var cream=document.querySelector("#cream");
+                var butter=document.querySelector("#butter");
+                var cheese=document.querySelector("#cheese");
+                var chorizo=document.querySelector("#chorizo");
+                var spaghetti=document.querySelector("#spaghetti");
+                var beans=document.querySelector("#beans");
+                var milk=document.querySelector("#milk");
+                var pesto=document.querySelector("#pesto");
+                var curry=document.querySelector("#curry");
+                var spinach=document.querySelector("#spinach");
+                var tomato=document.querySelector("#tomato");
+                var squash=document.querySelector("#squash");
+                var pepper=document.querySelector("#pepper");
+                var cilantro=document.querySelector("#cilantro");
+                var creamnum=document.querySelector("#creamnum");
+                var salmonnum=document.querySelector("#salmonnum");
+                var butternum=document.querySelector("#butternum");
+                var cheesenum=document.querySelector("#cheesenum");
+                var chorizonum=document.querySelector("#chorizonum");
+                var spaghettinum=document.querySelector("#spaghettinum");
+                var beansnum=document.querySelector("#beansnum");
+                var pestonum=document.querySelector("#pestonum");
+                var milknum=document.querySelector("#milknum");
+                var currynum=document.querySelector("#currynum");
+                var spinachnum=document.querySelector("#spinachnum");
+                var tomatonum=document.querySelector("#tomatonum");
+                var squashnum=document.querySelector("#squashnum");
+                var cilantronum=document.querySelector("#cilantronum");
+                var peppernum=document.querySelector("#peppernum");
+
+                
+
+                var salmonprice = 10;
+                var creamprice = 8;
+                var butterprice = 6;
+                var cheeseprice = 12; 
+                var chorizoprice = 8;
+                var spaghettiprice = 2;
+                var beansprice = 2;
+                var pestoprice = 3;
+                var milkprice = 1; 
+                var curryprice = 7;
+                var spinachprice = 2;
+                var tomatoprice = 1;
+                var squashprice = 4;  
+                var pepperprice = 3;
+                var cilantroprice = 2;
+
+
+                let cart = JSON.parse(localStorage.getItem("shoppingCart")) || {
+                    salmonqty: 0,
+                    creamqty: 0,
+                    butterqty: 0,
+                    cheeseqty: 0,
+                    chorizoqty: 0,
+                    spaghettiqty: 0,
+                    beansqty: 0,
+                    pestoqty: 0,
+                    milkqty: 0,
+                    curryqty: 0,
+                    spinachqty: 0,
+                    tomatoqty: 0,
+                    squashqty: 0,
+                    pepperqty: 0,
+                    cilantroqty: 0
+                };
+
+
+    //**Functions**//
+                salmon.addEventListener("click",addbutton);
+                cream.addEventListener("click",addbutton);
+                butter.addEventListener("click",addbutton);
+                cheese.addEventListener("click",addbutton);
+                chorizo.addEventListener("click",addbutton);
+                spaghetti.addEventListener("click",addbutton);
+                beans.addEventListener("click",addbutton);
+                pesto.addEventListener("click",addbutton);
+                milk.addEventListener("click",addbutton);
+                curry.addEventListener("click",addbutton);
+                spinach.addEventListener("click",addbutton);
+                tomato.addEventListener("click",addbutton);
+                squash.addEventListener("click",addbutton);
+                pepper.addEventListener("click",addbutton);
+                cilantro.addEventListener("click",addbutton);
 
 
 
-    </div>
+    //**Function Definitions**//
+    
+    navnum.textContent="("+((cart.salmonqty*1)+(cart.creamqty*1)+(cart.butterqty*1)+(cart.cheeseqty*1)+(cart.chorizoqty*1)+(cart.spaghettiqty*1)+(cart.beansqty*1)+(cart.pestoqty*1)+(cart.milkqty*1)+(cart.curryqty*1)+(cart.spinachqty*1)+(cart.tomatoqty*1)+(cart.squashqty*1)+(cart.cilantroqty*1)+(cart.pepperqty*1))+")";
+    squashnum.textContent = cart.squashqty + " in cart";
+    creamnum.textContent = cart.creamqty + " in cart";
+    salmonnum.textContent = cart.salmonqty + " in cart";
+    butternum.textContent = cart.butterqty + " in cart";
+    cheesenum.textContent = cart.cheeseqty + " in cart";
+    chorizonum.textContent = cart.chorizoqty + " in cart";
+    spaghettinum.textContent = cart.spaghettiqty + " in cart";
+    beansnum.textContent = cart.beansqty + " in cart";
+    pestonum.textContent = cart.pestoqty + " in cart";
+    milknum.textContent = cart.milkqty + " in cart";
+    currynum.textContent = cart.curryqty + " in cart";
+    spinachnum.textContent = cart.spinachqty + " in cart";
+    tomatonum.textContent = cart.tomatoqty + " in cart";
+    squashnum.textContent = cart.squashqty + " in cart";
+    cilantronum.textContent = cart.cilantroqty + " in cart";
+    peppernum.textContent = cart.pepperqty + " in cart"; 
 
-    <script src="cart.js"></script>
-    <script>
-        updateCartCount();
-    </script>
+function addbutton() {
+
+        if (this.id === "squash") {
+            if (cart.squashqty>=6){
+                this.disabled=true;
+                alert("Max quantity for this item reached");
+                }
+            else {
+                this.disabled=false;
+                cart.squashqty++;
+                }
+            }
+        else if (this.id === "cream") {
+            if (cart.creamqty>=6){
+                this.disabled=true;
+                alert("Max quantity for this item reached");
+                }
+            else {
+                this.disabled=false;
+                cart.creamqty++;
+                }
+        }
+        else if (this.id === "salmon") {
+            if (cart.salmonqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.salmonqty++;
+            }
+        }
+        else if (this.id === "butter") {
+            if (cart.butterqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.butterqty++;
+            }
+        }
+        else if (this.id === "cheese") {
+            if (cart.cheeseqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.cheeseqty++;
+            }
+        }
+        else if (this.id === "chorizo") {
+            if (cart.chorizoqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.chorizoqty++;
+            }
+        }
+        else if (this.id === "spaghetti") {
+            if (cart.spaghettiqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.spaghettiqty++;
+            }
+        }
+        else if (this.id === "beans") {
+            if (cart.beansqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.beansqty++;
+            }
+        }
+        else if (this.id === "pesto") {
+            if (cart.pestoqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.pestoqty++;
+            }
+        }
+        else if (this.id === "milk") {
+            if (cart.milkqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.milkqty++;
+            }
+        }
+        else if (this.id === "curry") {
+            if (cart.curryqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.curryqty++;
+            }
+        }
+        else if (this.id === "tomato") {
+            if (cart.tomatoqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.tomatoqty++;
+            }
+        }
+        else if (this.id === "spinach") {
+            if (cart.spinachqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.spinachqty++;
+            }
+        }
+        else if (this.id === "cilantro") {
+            if (cart.cilantroqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.cilantroqty++;
+            }
+        }
+        else if (this.id === "pepper") {
+            if (cart.pepperqty >= 6) {
+                this.disabled = true;
+                alert("Max quantity for this item reached");
+            } else {
+                this.disabled = false;
+                cart.pepperqty++;
+            }
+        }
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+    squashnum.textContent = cart.squashqty + " in cart";
+    creamnum.textContent = cart.creamqty + " in cart";
+    salmonnum.textContent = cart.salmonqty + " in cart";
+    butternum.textContent = cart.butterqty + " in cart";
+    cheesenum.textContent = cart.cheeseqty + " in cart";
+    chorizonum.textContent = cart.chorizoqty + " in cart";
+    spaghettinum.textContent = cart.spaghettiqty + " in cart";
+    beansnum.textContent = cart.beansqty + " in cart";
+    pestonum.textContent = cart.pestoqty + " in cart";
+    milknum.textContent = cart.milkqty + " in cart";
+    currynum.textContent = cart.curryqty + " in cart";
+    spinachnum.textContent = cart.spinachqty + " in cart";
+    tomatonum.textContent = cart.tomatoqty + " in cart";
+    squashnum.textContent = cart.squashqty + " in cart";
+    cilantronum.textContent = cart.cilantroqty + " in cart";
+    peppernum.textContent = cart.pepperqty + " in cart";
+    navnum.textContent="("+((cart.salmonqty*1)+(cart.creamqty*1)+(cart.butterqty*1)+(cart.cheeseqty*1)+(cart.chorizoqty*1)+(cart.spaghettiqty*1)+(cart.beansqty*1)+(cart.pestoqty*1)+(cart.milkqty*1)+(cart.curryqty*1)+(cart.spinachqty*1)+(cart.tomatoqty*1)+(cart.squashqty*1)+(cart.cilantroqty*1)+(cart.pepperqty*1))+")";
+    }
+</script>
 </body>
 </html>
 
