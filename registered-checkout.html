@@ -37,6 +37,12 @@
     <script>
       document.getElementById("checkout-btn").addEventListener("click", () => {
         alert("Checkout Complete");
+        if (typeof clearAllItemsFromCart === 'function') {
+                    clearAllItemsFromCart();
+                } else {
+                    alert("unable to clear cart");
+                }
+              window.location.href = 'cart.html'; 
       });
 
       loadCart();
