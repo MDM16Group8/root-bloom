@@ -37,77 +37,6 @@
 
     <script src="cart.js"></script>
     <script>
-      if (!localStorage.getItem("cart")) {
-        localStorage.setItem("cart", JSON.stringify([
-          { name: "Salmon", price: 14.39, quantity: 2 },
-          { name: "Chorizo", price: 6.99, quantity: 1 },
-          { name: "Spaghetti", price: 2.49, quantity: 3 }
-        ]));
-      }
-      function loadCart() {
-        const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-        const cartContainer = document.getElementById("cart-items");
-        const totalDisplay = document.getElementById("cart-total");
-        const message = document.getElementById("cart-message");
-
-        cartContainer.innerHTML = "";
-        let total = 0;
-
-        cartItems.forEach((item, index) => {
-          const itemTotal = (item.price * item.quantity).toFixed(2);
-          total += parseFloat(itemTotal);
-
-          const itemDiv = document.createElement("div");
-          itemDiv.className = "cart-item";
-          itemDiv.innerHTML = `
-        <span>${item.name}</span>
-        <span>$${item.price.toFixed(2)}</span>
-        <div class="quantity-controls">
-          <button onclick="updateQuantity(${index}, -1)">−</button>
-          <span>${item.quantity}</span>
-          <button onclick="updateQuantity(${index}, 1)">+</button>
-        </div>
-        <span>$${itemTotal}</span>
-        <button onclick="removeItem(${index})">remove from cart</button>
-          `;
-          cartContainer.appendChild(itemDiv);
-        });
-
-        totalDisplay.innerText = `Total: $${total.toFixed(2)}`;
-        const checkoutBtn = document.getElementById("checkout-btn");
-        if (cartItems.length === 0) {
-          checkoutBtn.disabled = true;
-          checkoutBtn.style.opacity = 0.5;
-        } else {
-          checkoutBtn.disabled = false;
-          checkoutBtn.style.opacity = 1;
-        }
-      }
-
-      function updateQuantity(index, change) {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        cart[index].quantity += change;
-
-        if (cart[index].quantity < 1) {
-          cart[index].quantity = 1;
-          document.getElementById("cart-message").innerText = "Quantity can't be less than 1.";
-        } else {
-          document.getElementById("cart-message").innerText = "Item updated!";
-        }
-
-        localStorage.setItem("cart", JSON.stringify(cart));
-        loadCart();
-      }
-
-      function removeItem(index) {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        cart.splice(index, 1);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        document.getElementById("cart-message").innerText = "Item removed!";
-        loadCart();
-      }
-
-
       document.getElementById("checkout-btn").addEventListener("click", () => {
         window.location.href = "guest.html";
       });
@@ -119,8 +48,6 @@
       document.getElementById("signup-btn").addEventListener("click", () => {
         window.location.href = "signup.html";
       });
-
-
 
       loadCart();
 
