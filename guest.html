@@ -56,6 +56,7 @@
         </form>
     </div>
 
+    <script src="cart.js"></script>
     <script>
         document.getElementById('checkout-form').addEventListener('submit', function (e) {
             e.preventDefault();
@@ -72,6 +73,7 @@
                 alert("Payment failed. Please check your card details.");
             }
         });
+        updateCartCount();
     </script>
 </body>
 </html>

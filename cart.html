@@ -35,6 +35,7 @@
     </div>
 
 
+    <script src="cart.js"></script>
     <script>
       if (!localStorage.getItem("cart")) {
         localStorage.setItem("cart", JSON.stringify([
@@ -123,6 +124,7 @@
 
       loadCart();
 
+      updateCartCount();
     </script>
 
   </body>

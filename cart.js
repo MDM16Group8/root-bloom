@@ -37,10 +37,10 @@ window.INGREDIENTS = [
 ];
 
 // Get cart quantities
-function getCart() { return JSON.parse(localStorage.getItem('cart')) || {}; }
+function getCart() { return JSON.parse(localStorage.getItem('shopping_cart')) || {}; }
 
 // Save new cart quantities
-function saveCart(cart) { localStorage.setItem('cart', JSON.stringify(cart)); }
+function saveCart(cart) { localStorage.setItem('shopping_cart', JSON.stringify(cart)); }
 
 // Update the total cart ingredients count in object with id "cart-count"
 function updateCartCount() {
