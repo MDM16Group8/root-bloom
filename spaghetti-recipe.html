@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> Root & Bloom Food </title>
+    <title>Cacio e pepe Recipe - Root & Bloom Food</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="root_style.css">
@@ -19,24 +19,104 @@
             <img class="logo" src=logos/transparent-green.png width="15%" alt="root + bloom logo in green" /></a>
     </div>
     <div class="topnav">
-        <a href="cart.html">My Cart</a>
+        <a href="cart.html">My Cart (<span class="cart-count" id="cart-count">0</span>)</a>
         <a class="active" href="recipes.html">Explore Recipes</a>
         <a href="shop.html">Shop Groceries</a>
     </div>
     <div class="body">
-        <h1>Spaghetti Recipes</h1>
+        <h1>Cacio e pepe</h1>
+        <div class="recipe-content">
+            <div class="content-left">
+                <img width="300" src="images/spaghetti.jpg" alt="Cacio e pepe">
+                <div class="recipe-btns">
+                    <button class="recipe-btn">Save</button> <button class="recipe-btn"
+                        onclick="showSocials()">Share</button>
+                    <button class="recipe-btn" onclick="showRating()">Rating: <span
+                            class="fa fa-star checked"></span><span class="rating-number">0</span></button>
+                    <!-- Sharing -->
+                    <div class="share">
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                        <a href="https://ca.pinterest.com/" class="fa fa-social fa-pinterest"></a>
+                        <a href="https://www.facebook.com/" class="fa fa-social fa-facebook"></a>
+                        <a href="https://x.com/" class="fa fa-social fa-twitter"></a>
+                        <a href="mailto:" class="fa fa-social fa-envelope"></a>
+                    </div>
+                    <!-- Rating -->
+                    <div class="rate">
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <a href="">Cacio e pepe</a><br>
-        <a href="">Spaghetti Carbonara</a><br>
-        <a href="">Spaghetti and Meatballs</a> <br>
+                        <span value="1" class="fa fa-star" onclick="rate(1)" onmouseover="hover(1)"></span>
+                        <span value="2" class="fa fa-star" onclick="rate(2)" onmouseover="hover(2)"></span>
+                        <span value="3" class="fa fa-star" onclick="rate(3)" onmouseover="hover(3)"></span>
+                        <span value="4" class="fa fa-star" onclick="rate(4)" onmouseover="hover(4)"></span>
+                        <span value="5" class="fa fa-star" onclick="rate(5)" onmouseover="hover(5)"></span>
 
+                        <p class="rating"><span class="rating-number">0</span></p>
+                    </div>
+                </div>
+                <h3>Description</h3>
+                <p class="recipe-des">Whip up a simple cacio e pepe for a speedy lunch. With four simple ingredients – spaghetti, pepper, parmesan and butter – this is a storecupboard favourite.</p>
+            </div>
+            <div class="content-right">
+                <table class="data" style="border-collapse: collapse">
+                    <tr>
+                        <th>Serving</th>
+                        <th>Prep Time</th>
+                        <th>Cook Time</th>
+                        <th>Difficulty</th>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>5 mins</td>
+                        <td>10 mins</td>
+                        <td>Easy</td>
+                    </tr>
+                </table>
+                <h3>Ingredients</h3>
+                <ul id="ingredient-list"></ul>
+                <h4 class="total-cost">Total cost: <span id="total-cost-value">$0</span></h4>
 
+                <button class="add-cart-btn" onclick="addToCart(window.currentRecipeQuantities)">Add Ingredients to
+                    Cart</button>
+
+                <h3>Nutrition Facts (per serving)</h3>
+                <table class="nutrition-table">
+                    <tr>
+                        <th>Calories</th>
+                        <td>565 kcal</td>
+                    </tr>
+                    <tr>
+                        <th>Fat</th>
+                        <td>19 g</td>
+                    </tr>
+                    <tr>
+                        <th>Protein</th>
+                        <td>21 g</td>
+                    </tr>
+                    <tr>
+                        <th>Carbs</th>
+                        <td>75 g</td>
+                    </tr>
+                </table>
+
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Cook the pasta for 2 mins less than pack instructions state, in salted boiling water. Meanwhile, melt the butter in a medium frying pan over a low heat, then add the ground black pepper and toast for a few minutes.</li>
+                    <li>Drain the pasta, keeping 200ml of the pasta water. Tip the pasta and 100ml of the pasta water into the pan with the butter and pepper. Toss briefly, then scatter over the parmesan evenly, but don’t stir – wait for the cheese to melt for 30 seconds, then once melted, toss everything well, and stir together. This prevents the cheese from clumping or going stringy and makes a smooth, shiny sauce. Add a splash more pasta water if you need to, to loosen the sauce and coat the pasta. Serve immediately with a good grating of black pepper.</li>
+                </ol>
+            </div>
+        </div>
     </div>
-
+    </div>
+    <script src="cart.js"></script>
+    <script src="recipe.js"></script>
+    <script src="share-rate.js"></script>
 
     <script>
-
-
+        renderIngredients('ingredient-list', spaghettiRecipeIngredientIds)
+        updateCartCount();
     </script>
 </body>
 

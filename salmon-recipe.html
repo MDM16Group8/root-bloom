@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> Root & Bloom Food </title>
+    <title>Salmon Recipe - Root & Bloom Food</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="root_style.css">
@@ -19,24 +19,105 @@
             <img class="logo" src=logos/transparent-green.png width="15%" alt="root + bloom logo in green" /></a>
     </div>
     <div class="topnav">
-        <a href="cart.html">My Cart</a>
+        <a href="cart.html">My Cart (<span class="cart-count" id="cart-count">0</span>)</a>
         <a class="active" href="recipes.html">Explore Recipes</a>
         <a href="shop.html">Shop Groceries</a>
     </div>
     <div class="body">
-        <h1>Salmon Recipes</h1>
+        <h1>Salmon & Spinach Gratin</h1>
+        <div class="recipe-content">
+            <div class="content-left">
+                <img width="300" src="images/salmon.webp" alt="Salmon & Spinach Gratin">
+                <div class="recipe-btns">
+                    <button class="recipe-btn">Save</button> <button class="recipe-btn"
+                        onclick="showSocials()">Share</button>
+                    <button class="recipe-btn" onclick="showRating()">Rating: <span
+                            class="fa fa-star checked"></span><span class="rating-number">0</span></button>
+                    <!-- Sharing -->
+                    <div class="share">
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                        <a href="https://ca.pinterest.com/" class="fa fa-social fa-pinterest"></a>
+                        <a href="https://www.facebook.com/" class="fa fa-social fa-facebook"></a>
+                        <a href="https://x.com/" class="fa fa-social fa-twitter"></a>
+                        <a href="mailto:" class="fa fa-social fa-envelope"></a>
+                    </div>
+                    <!-- Rating -->
+                    <div class="rate">
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <a href="">Smoked salmon & spinach gratin</a><br>
-        <a href="">Pan-Seared Salmon with Garlic Butter</a><br>
-        <a href="">Honey Garlic Glazed Salmon</a> <br>
+                        <span value="1" class="fa fa-star" onclick="rate(1)" onmouseover="hover(1)"></span>
+                        <span value="2" class="fa fa-star" onclick="rate(2)" onmouseover="hover(2)"></span>
+                        <span value="3" class="fa fa-star" onclick="rate(3)" onmouseover="hover(3)"></span>
+                        <span value="4" class="fa fa-star" onclick="rate(4)" onmouseover="hover(4)"></span>
+                        <span value="5" class="fa fa-star" onclick="rate(5)" onmouseover="hover(5)"></span>
 
+                        <p class="rating"><span class="rating-number">0</span></p>
+                    </div>
+                </div>
+                <h3>Description</h3>
+                <p class="recipe-des">Make this easy Swedish-inspired smoked salmon and spinach gratin with just four ingredients. Serve with potatoes and roasted beets – perfect for entertaining.</p>
+            </div>
+            <div class="content-right">
+                <table class="data" style="border-collapse: collapse">
+                    <tr>
+                        <th>Serving</th>
+                        <th>Prep Time</th>
+                        <th>Cook Time</th>
+                        <th>Difficulty</th>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>5 mins</td>
+                        <td>45 mins</td>
+                        <td>Easy</td>
+                    </tr>
+                </table>
+                <h3>Ingredients</h3>
+                <ul id="ingredient-list"></ul>
+                <h4 class="total-cost">Total cost: <span id="total-cost-value">$0</span></h4>
 
+                <button class="add-cart-btn" onclick="addToCart(window.currentRecipeQuantities)">Add Ingredients to
+                    Cart</button>
+
+                <h3>Nutrition Facts (per serving)</h3>
+                <table class="nutrition-table">
+                    <tr>
+                        <th>Calories</th>
+                        <td>495 kcal</td>
+                    </tr>
+                    <tr>
+                        <th>Fat</th>
+                        <td>40 g</td>
+                    </tr>
+                    <tr>
+                        <th>Protein</th>
+                        <td>28 g</td>
+                    </tr>
+                    <tr>
+                        <th>Carbs</th>
+                        <td>4 g</td>
+                    </tr>
+                </table>
+
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Put the spinach in a really big saucepan (or two saucepans) and add a few tablespoons of water. Cover, set over a medium heat and cook for about 5-8 mins, turning the spinach over every so often, until wilted. Tip it into a colander to drain and allow it to cool (spread it out on a plate to cool it quicker). Take big handfuls of it in your fists and squeeze out the excess water. It’s really important that you do this, otherwise the water will leach out and make the cream watery and green.</li>
+                    <li>Chop the spinach. Melt the butter in a saucepan and gently toss the spinach in it. Season with pepper and a tiny bit of salt (there’s so much salt in the salmon). Heat the oven to 160C/140C fan/gas 3. Lay the spinach in the bottom of a gratin dish (about 30cm x 20cm), then arrange the salmon fillets on top.</li>
+                    <li>Heat the double cream in a small pan, then pour it all over the salmon and spinach. Bake for 35 mins, or until the top is golden and the cream is bubbling.</li>
+                </ol>
+            </div>
+        </div>
     </div>
-
+    </div>
+    <script src="cart.js"></script>
+    <script src="recipe.js"></script>
+    <script src="share-rate.js"></script>
 
     <script>
-
-
+        renderIngredients('ingredient-list', salmonRecipeIngredientIds)
+        updateCartCount();
     </script>
 </body>
 
