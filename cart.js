@@ -164,8 +164,8 @@ function addToCart(quantities) {
     }
   }
   saveCart(cart);
-  alert('Ingredients have been added to your cart!');
   updateCartCount();
+  alert('Ingredients have been added to your cart!');
 }
 
 // Remove product from cart

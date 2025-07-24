@@ -253,7 +253,7 @@ ul#ingredient-list {
 
 button.add-cart-btn {
   background-color: #1b5e20;
-  color: #a3d6a7;
+  color: #FFFFFF;
   font-family: "Jost", sans-serif;
   font-weight: 600;
   padding: 10px 20px;
@@ -295,38 +295,25 @@ button.add-cart-btn:hover {
 .nutrition-table {
   width: 60%;
   margin-top: 20px;
-  border-collapse: separate;
   border-spacing: 0;
   border: 2px solid #1b5e20;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  background-color: #ffffff;
 }
 
 .nutrition-table th,
 .nutrition-table td {
-  padding: 10px 14px;
-  font-size: 14px;
-  border-bottom: 1px solid #eee;
-}
-
-.nutrition-table th {
-  background-color: #ffffff;
   color: #333;
   text-align: left;
-  font-weight: 600;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #1b5e20;
 }
 
-.nutrition-table td {
-  background-color: #ffffff;
-  color: #555;
-}
-
-.nutrition-table tr:last-child td {
+.nutrition-table tr:last-child td,
+.nutrition-table tr:last-child th {
   border-bottom: none;
 }
-
 
 .shop-ingredients {
   background-color: transparent;

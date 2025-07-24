@@ -30,9 +30,14 @@ const curryRecipeIngredientIds = [
 const quantities = {};
 
 function changeQty(ingredient, change) {
-    window.currentRecipeQuantities[ingredient] = Math.max(0, window.currentRecipeQuantities[ingredient] + change);
-    document.getElementById('qty-'+ingredient).textContent = window.currentRecipeQuantities[ingredient];
-    updateTotalCost();
+    let newValue = Math.max(0, window.currentRecipeQuantities[ingredient] + change);
+    if ((getItemQuantity(ingredient) + newValue) > 6) {
+        alert(`Max quantity for each product in the cart is 6. You already have ${getItemQuantity(ingredient)} ${window.INGREDIENTS.find(i => i.id === ingredient).name} in the cart`);
+    } else {
+        window.currentRecipeQuantities[ingredient] = newValue
+        document.getElementById('qty-'+ingredient).textContent = window.currentRecipeQuantities[ingredient];
+        updateTotalCost();
+    }
 }
 
 function getPriceById(id) {
@@ -59,12 +64,12 @@ function renderIngredients(containerId, ingredientIds) {
 		const item = window.INGREDIENTS.find(i => i.id === id);
 		if (!item) return;
 
-		quantities[item.id] = 1;
+		quantities[item.id] = 0;
 
 		const li = document.createElement('li');
 		li.innerHTML = `
 			<img src="icons/minus-circle.svg" class="qty-controls" onclick="changeQty('${item.id}', -1)">
-			<span class="qty" id="qty-${item.id}">1</span>
+			<span class="qty" id="qty-${item.id}">0</span>
 			<img src="icons/add.svg" class="qty-controls" onclick="changeQty('${item.id}', 1)">
 			<span class="ingredient-name">${item.name} (${item.price})</span>
 		`;
