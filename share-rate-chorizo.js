@@ -40,25 +40,25 @@ let showRating = function () {
 
 const stars = document.querySelectorAll(".fa-star");
 const ratings = document.querySelectorAll(".rating-number");
-let currentRating;
+let currentRatingChorizo;
 document.addEventListener(
   "DOMContentLoaded",
   function () {
-    if (currentRating != 0) {
-      currentRating = localStorage.getItem("chorizo");
+    if (currentRatingChorizo != 0) {
+      currentRatingChorizo = localStorage.getItem("chorizo");
       ratings.forEach((rating) => {
-        rating.textContent = currentRating;
+        rating.textContent = currentRatingChorizo;
       });
       stars.forEach((star) => {
         const starValue = star.getAttribute("value");
-        if (starValue <= currentRating) {
+        if (starValue <= currentRatingChorizo) {
           star.classList.add("checked");
         } else {
           star.classList.remove("checked");
         }
       });
     } else {
-      currentRating = 0;
+      currentRatingChorizo = 0;
     }
   },
   false
@@ -79,15 +79,15 @@ function hover(potentialRating) {
 }
 
 // Click to Rate
-function rate(newRating) {
-  if (currentRating == newRating) {
-    currentRating = 0;
+function rate(newRatingChorizo) {
+  if (currentRatingChorizo == newRatingChorizo) {
+    currentRatingChorizo = 0;
   } else {
-    currentRating = newRating;
+    currentRatingChorizo = newRatingChorizo;
   }
   stars.forEach((star) => {
     const starValue = star.getAttribute("value");
-    if (starValue <= currentRating) {
+    if (starValue <= currentRatingChorizo) {
       star.classList.add("checked");
     } else {
       star.classList.remove("checked");
@@ -95,10 +95,10 @@ function rate(newRating) {
   });
 
   ratings.forEach((rating) => {
-    rating.textContent = currentRating;
+    rating.textContent = currentRatingChorizo;
   });
 
-  localStorage.setItem("chorizo", currentRating);
+  localStorage.setItem("chorizo", currentRatingChorizo);
 }
 
 let checked = function () {
